@@ -10,7 +10,7 @@ Monitore your websites availability, http status code (current and history), cer
 
 ## Deploying
 
-### Kubernetes
+### With Kubernetes
 
 - Dependencies
 
@@ -39,7 +39,7 @@ Monitore your websites availability, http status code (current and history), cer
       grafana   ClusterIP   10.105.212.73   192.168.49.2  3000/TCP   9m51s
       ```
 
-### Docker compose
+### With Docker compose
 
 - Dependencies
 
@@ -98,7 +98,7 @@ Some useful PromQL queries
 
 ### Misc
 
-- Deployed on kuberneres
+- Deployed with kuberneres
   * Request blackbox exporter
 
     - Temporary access
@@ -116,7 +116,7 @@ Some useful PromQL queries
         ```
       * `curl -s "192.168.49.2:9115/probe?module=http_2xx&target=target.tld"`
 
-- Deployed on docker compose
+- Deployed with docker compose
 
   * Request blackbox exporter
     * `curl -s "localhost:9115/probe?module=http_2xx&target=target.tld"`
