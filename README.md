@@ -25,18 +25,18 @@ Monitore your websites availability, http status code (current and history), cer
   * Starting services `kubectl apply -n prometheus -f sample`
   * Visualize dashboards
 
-    - Short visits
+    - Temporary access
 
       * `kubectl -n prometheus port-forward service/grafana 3000:3000`
       * [Visualize dashboards](http://localhost:3000)
 
-    - Long visits
+    - Long-term access
 
-      `kubectl -n prometheus get svc grafana` get request address http://10.105.212.73:3000/
+      `kubectl -n prometheus get svc grafana` get request address http://192.168.49.2:3000/
       ```bash
       # kubectl -n prometheus get svc grafana
       NAME      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-      grafana   ClusterIP   10.105.212.73   <none>        3000/TCP   9m51s
+      grafana   ClusterIP   10.105.212.73   192.168.49.2  3000/TCP   9m51s
       ```
 
 ### Docker compose
@@ -100,19 +100,21 @@ Some useful PromQL queries
 
 - Deployed on kuberneres
   * Request blackbox exporter
-    - Short visits
+
+    - Temporary access
+
       * `kubectl -n prometheus port-forward service/blackbox-exporter 9115:9115`
       * `curl -s "localhost:9115/probe?module=http_2xx&target=target.tld"`
 
-    - Long visits
+    - Long-term access
 
       * `kubectl -n prometheus get svc blackbox-exporter` get request address
         ```bash
         # kubectl -n prometheus get svc blackbox-exporter
         NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-        blackbox-exporter   ClusterIP   10.97.216.40   <none>        9115/TCP   6m20s
+        blackbox-exporter   ClusterIP   10.97.216.40   192.168.49.2  9115/TCP   6m20s
         ```
-      * `curl -s "10.97.216.40:9115/probe?module=http_2xx&target=target.tld"`
+      * `curl -s "192.168.49.2:9115/probe?module=http_2xx&target=target.tld"`
 
 - Deployed on docker compose
 
