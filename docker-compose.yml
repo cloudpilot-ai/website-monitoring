@@ -15,7 +15,6 @@ services:
     - "./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
     - "./config/prometheus/targets.yml:/etc/prometheus/targets.yml:ro"
     - "./config/prometheus/rules:/etc/prometheus/rules"
-    - "prometheus_data:/prometheus"
     command:
     - "--config.file=/etc/prometheus/prometheus.yml"
     - "--storage.tsdb.path=/prometheus"
